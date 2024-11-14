@@ -13,6 +13,9 @@ namespace DataAccessLayer.Entities
         public DateTime DueDate { get; set; }
         public int TeacherId { get; set; }
         public User Teacher { get; set; }
-        public ICollection<StudentTask> StudentTask { get; set; }
+        public int SubjectId { get; set; }
+        public Subject Subject { get; set; }
+        public ICollection<StudentTask> StudentTask { get; set; } 
     }
+
 }

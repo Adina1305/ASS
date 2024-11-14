@@ -16,5 +16,7 @@ namespace DataAccessLayer.Entities
         public string FilePath { get; set; }
         public bool IsCompleted { get; set; }
         public decimal? Grade { get; set; }
+        public string Feedback { get; set; }  
     }
+
 }

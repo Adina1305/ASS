@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\PresentationLayer
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Masterat/ASS/ColegiuUTM/ColegiuUTM/PresentationLayer/Views/Dashboard/Profesor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFByb2Zlc29yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Masterat/ASS/ColegiuUTM/ColegiuUTM/PresentationLayer/Views/Dashboard/Student.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Masterat/ASS/ColegiuUTM/ColegiuUTM/PresentationLayer/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

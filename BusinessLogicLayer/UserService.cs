@@ -1,5 +1,6 @@
-﻿using DataAccessLayer;
-using DataAccessLayer.Entities;
+﻿using DataAccessLayer.Entities;
+using DataAccessLayer.Repositories; 
+using DataAccessLayer.Repository;
 using System.Threading.Tasks;
 
 public class UserService

@@ -1,4 +1,6 @@
-using DataAccessLayer;
+using BusinessLogicLayer;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -14,6 +16,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<TaskService>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 
 var app = builder.Build();
 

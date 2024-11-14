@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLogicLayer;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace PresentationLayer.Controllers
 {
@@ -11,7 +13,6 @@ namespace PresentationLayer.Controllers
             _userService = userService;
         }
 
-        // GET: Login
         public IActionResult Index()
         {
             return View();
@@ -22,14 +23,24 @@ namespace PresentationLayer.Controllers
         public async Task<IActionResult> Index(string email, string password)
         {
             var user = await _userService.AuthenticateUserAsync(email, password);
+
             if (user != null)
             {
-                // În caz de autentificare cu succes, redirecționăm către Home/Index
-                return RedirectToAction("Index", "Home");
+                if (user.UserType == "Student")
+                {
+                    return RedirectToAction("StudentDashboard", "Dashboard");
+                }
+                else if (user.UserType == "Teacher")
+                {
+                    return RedirectToAction("ProfesorDashboard", "Dashboard");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             else
             {
-                // Adăugăm un mesaj de eroare dacă autentificarea a eșuat
                 ViewData["ErrorMessage"] = "Invalid login attempt.";
             }
 

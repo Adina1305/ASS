@@ -19,7 +19,6 @@ namespace PresentationLayer.Controllers
             return View();
         }
 
-        // POST: Register
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(User model)

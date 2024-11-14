@@ -28,3 +28,4 @@ D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\BusinessLogicLayer\obj\Debug\net7.0\Busine
 D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\BusinessLogicLayer\obj\Debug\net7.0\refint\BusinessLogicLayer.dll
 D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.pdb
 D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\BusinessLogicLayer\obj\Debug\net7.0\ref\BusinessLogicLayer.dll
+D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.sourcelink.json
