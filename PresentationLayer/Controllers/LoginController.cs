@@ -24,13 +24,15 @@ namespace PresentationLayer.Controllers
             var user = await _userService.AuthenticateUserAsync(email, password);
             if (user != null)
             {
-                // For now, just return to Home
+                // În caz de autentificare cu succes, redirecționăm către Home/Index
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                // Adăugăm un mesaj de eroare dacă autentificarea a eșuat
+                ViewData["ErrorMessage"] = "Invalid login attempt.";
             }
+
             return View();
         }
     }

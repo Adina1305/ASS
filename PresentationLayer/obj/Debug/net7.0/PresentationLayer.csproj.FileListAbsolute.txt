@@ -156,3 +156,4 @@ D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\PresentationLayer\obj\Debug\net7.0\refint\
 D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\PresentationLayer\obj\Debug\net7.0\PresentationLayer.pdb
 D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\PresentationLayer\obj\Debug\net7.0\PresentationLayer.genruntimeconfig.cache
 D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\PresentationLayer\obj\Debug\net7.0\ref\PresentationLayer.dll
+D:\Masterat\ASS\ColegiuUTM\ColegiuUTM\PresentationLayer\obj\Debug\net7.0\PresentationLayer.sourcelink.json
