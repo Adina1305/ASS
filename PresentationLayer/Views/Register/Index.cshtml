@@ -1,0 +1,63 @@
+﻿@model DataAccessLayer.Entities.User
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model?.Name" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Surname">Surname</label>
+        <input type="text" class="form-control" id="Surname" name="Surname" value="@Model?.Surname" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model?.Email" required />
+    </div>
+
+    <div class="form-group">
+        <label for="UserType">User Type</label>
+        <select class="form-control" id="UserType" name="UserType">
+            <option value="Student" selected="@Model?.UserType == " Student"">Student</option>
+            <option value="Teacher" selected="@Model?.UserType == " Teacher"">Teacher</option>
+        </select>
+    </div>
+
+    <div class="form-group" id="GroupField" style="display:none;">
+        <label for="Group">Group</label>
+        <input type="text" class="form-control" id="Group" name="Group" value="@Model?.Group" />
+    </div>
+
+    <div class="form-group" id="DisciplineField" style="display:none;">
+        <label for="Discipline">Discipline</label>
+        <input type="text" class="form-control" id="Discipline" name="Discipline" value="@Model?.Discipline" />
+    </div>
+
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" name="Password" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+<script>
+    document.getElementById('UserType').addEventListener('change', function () {
+        var userType = this.value;
+        document.getElementById('GroupField').style.display = (userType === 'Student') ? 'block' : 'none';
+        document.getElementById('DisciplineField').style.display = (userType === 'Teacher') ? 'block' : 'none';
+    });
+
+    document.getElementById('UserType').dispatchEvent(new Event('change'));
+</script>
