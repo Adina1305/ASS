@@ -5,7 +5,7 @@ using System;
 
 namespace BusinessLogicLayer
 {
-    public class SubjectService
+    public class SubjectService : ISubjectService
     {
         private readonly ISubjectRepository _subjectRepository;
 
@@ -14,9 +14,17 @@ namespace BusinessLogicLayer
             _subjectRepository = subjectRepository;
         }
 
-        public async Task<IEnumerable<Subject>> GetSubjectsForTeacher(int teacherId)
+        public void AddSubject(Subject subject)
         {
-            return await _subjectRepository.GetSubjectsForTeacherAsync(teacherId);
+            if (subject == null)
+                throw new ArgumentNullException(nameof(subject));
+
+            _subjectRepository.Add(subject);  
+        }
+
+        public IEnumerable<Subject> GetAllSubjects()
+        {
+            return _subjectRepository.GetAll(); 
         }
     }
 

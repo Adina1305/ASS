@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Repository
+namespace BusinessLogicLayer
 {
-    public interface ISubjectRepository
+    public interface ITaskService
     {
-        void Add(Subject subject);
-        IEnumerable<Subject> GetAll();
+        void Add(Tasks task);
     }
-
-
 }

@@ -7,6 +7,45 @@
     <h2>Bine ai venit, @ViewBag.User.Name @ViewBag.User.Surname!</h2>
     <p>Email: @ViewBag.User.Email</p>
     <p>Disciplina: @ViewBag.User.Discipline</p>
+
+    <h3>Adaugă Task</h3>
+    <form method="post" action="/Profesor/AddTask">
+        <div class="mb-3">
+            <label for="taskTitle" class="form-label">Titlu Task</label>
+            <input type="text" class="form-control" id="taskTitle" name="Title" required>
+        </div>
+        <div class="mb-3">
+            <label for="dueDate" class="form-label">Data Limită</label>
+            <input type="date" class="form-control" id="dueDate" name="DueDate" required>
+        </div>
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subiect</label>
+            <select class="form-select" id="subject" name="SubjectId" required>
+                <option value="">Alege Subiect</option>
+                @if (ViewBag.Subjects != null && ViewBag.Subjects.Any())
+                {
+                    @foreach (var subject in ViewBag.Subjects)
+                    {
+                        <option value="@subject.Id">@subject.Name</option>
+                    }
+                }
+                else
+                {
+                    <option value="">Nu există subiecte disponibile</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Adaugă Task</button>
+    </form>
+
+    <h3>Adaugă Subiect</h3>
+    <form method="post" action="/Profesor/AddSubject">
+        <div class="mb-3">
+            <label for="subjectName" class="form-label">Nume Subiect</label>
+            <input type="text" class="form-control" id="subjectName" name="Name" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Adaugă Subiect</button>
+    </form>
 }
 else
 {

@@ -10,7 +10,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<TaskService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<ISubjectService, SubjectService>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
 builder.Services.AddScoped<UserRepository>();
@@ -22,6 +23,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;  
     options.Cookie.IsEssential = true;  
 });
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllersWithViews();
 

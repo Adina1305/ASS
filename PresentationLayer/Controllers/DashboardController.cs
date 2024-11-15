@@ -21,11 +21,18 @@ namespace PresentationLayer.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("", "Email sau parolă incorectă.");
-                return View(); 
+                return View();
             }
 
             HttpContext.Session.SetInt32("UserId", user.Id);
-            ViewBag.User = user;
+            HttpContext.Session.SetString("UserType", user.UserType);
+            HttpContext.Session.SetString("Email", user.Email);
+
+            Response.Cookies.Append("IsLoggedIn", "true", new CookieOptions
+            {
+                Expires = DateTimeOffset.Now.AddHours(1),
+                HttpOnly = true
+            });
 
             if (user.UserType == "Student")
             {
@@ -36,51 +43,58 @@ namespace PresentationLayer.Controllers
                 return RedirectToAction("ProfesorDashboard", "Dashboard");
             }
 
-            return RedirectToAction("Index", "Login"); 
+            return RedirectToAction("Index", "Login");
         }
 
-        public IActionResult StudentDashboard()
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            Response.Cookies.Delete("IsLoggedIn");
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> StudentDashboard()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
             {
-                Console.WriteLine("Utilizatorul nu este autentificat");
                 return RedirectToAction("Index", "Login");
             }
 
-            var user = _userService.GetUserDetailsAsync(userId.Value).Result;
-            if (user == null)
+            var user = await _userService.GetUserDetailsAsync(userId.Value);
+
+            if (user != null)
             {
-                Console.WriteLine("Nu s-au găsit date pentru utilizatorul cu ID-ul " + userId);
+                ViewBag.User = user;
+            }
+            else
+            {
                 return RedirectToAction("Index", "Login");
             }
 
-            ViewBag.User = user;
-            return View("Student");  
+            return View("Student");
         }
 
-        public IActionResult ProfesorDashboard()
+        public async Task<IActionResult> ProfesorDashboard()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
             {
-                Console.WriteLine("Utilizatorul nu este autentificat");
                 return RedirectToAction("Index", "Login");
             }
 
-            var user = _userService.GetUserDetailsAsync(userId.Value).Result;
-            if (user == null)
+            var user = await _userService.GetUserDetailsAsync(userId.Value);
+
+            if (user != null)
             {
-                Console.WriteLine("Nu s-au găsit date pentru utilizatorul cu ID-ul " + userId);
+                ViewBag.User = user;
+            }
+            else
+            {
                 return RedirectToAction("Index", "Login");
             }
 
-            ViewBag.User = user;
-            return View("Profesor");  
+            return View("Profesor");
         }
-
-
-
     }
-
 }

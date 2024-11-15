@@ -1,65 +1,65 @@
 ﻿@model PresentationLayer.Models.RegisterViewModel
 
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Înregistrare";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <form asp-action="Index" method="post">
     <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
+        <label asp-for="Name">Nume</label>
+        <input asp-for="Name" class="form-control" placeholder="Introduceți numele dvs." />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Surname"></label>
-        <input asp-for="Surname" class="form-control" />
+        <label asp-for="Surname">Prenume</label>
+        <input asp-for="Surname" class="form-control" placeholder="Introduceți prenumele dvs." />
         <span asp-validation-for="Surname" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" class="form-control" placeholder="Introduceți adresa de email" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="UserType"></label>
+        <label asp-for="UserType">Tip Utilizator</label>
         <select asp-for="UserType" class="form-control" id="UserType">
-            <option value="">Select User Type</option>
+            <option value="">Selectați tipul de utilizator</option>
             <option value="Student">Student</option>
-            <option value="Teacher">Teacher</option>
+            <option value="Teacher">Profesor</option>
         </select>
         <span asp-validation-for="UserType" class="text-danger"></span>
     </div>
 
     <div class="form-group" id="GroupField" style="display:none;">
-        <label asp-for="Group"></label>
-        <input asp-for="Group" class="form-control" />
+        <label asp-for="Group">Grupa</label>
+        <input asp-for="Group" class="form-control" placeholder="Introduceți grupa" />
         <span asp-validation-for="Group" class="text-danger"></span>
     </div>
 
     <div class="form-group" id="DisciplineField" style="display:none;">
-        <label asp-for="Discipline"></label>
-        <input asp-for="Discipline" class="form-control" />
+        <label asp-for="Discipline">Disciplină</label>
+        <input asp-for="Discipline" class="form-control" placeholder="Introduceți disciplina" />
         <span asp-validation-for="Discipline" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" class="form-control" />
+        <label asp-for="Password">Parolă</label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="Introduceți parola" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <label asp-for="ConfirmPassword">Confirmare Parolă</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirmați parola" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="submit" class="btn btn-primary">Înregistrare</button>
 </form>
 
 @section Scripts {

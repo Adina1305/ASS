@@ -13,6 +13,7 @@ namespace PresentationLayer.Controllers
             _userService = userService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -27,6 +28,8 @@ namespace PresentationLayer.Controllers
             if (user != null)
             {
                 HttpContext.Session.SetInt32("UserId", user.Id);
+                HttpContext.Session.SetString("UserType", user.UserType);
+                HttpContext.Session.SetString("Email", user.Email);
 
                 if (user.UserType == "Student")
                 {
@@ -41,12 +44,15 @@ namespace PresentationLayer.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            else
-            {
-                ViewData["ErrorMessage"] = "Invalid login attempt.";
-            }
 
+            ViewData["ErrorMessage"] = "Email sau parolă incorectă.";
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
