@@ -1,36 +1,38 @@
 ﻿using DataAccessLayer.Entities;
-using DataAccessLayer.Repositories; 
 using DataAccessLayer.Repository;
 using System.Threading.Tasks;
 
-public class UserService
+namespace BusinessLogicLayer
 {
-    private readonly UserRepository _userRepository;
-
-    public UserService(UserRepository userRepository)
+    public class UserService
     {
-        _userRepository = userRepository;
-    }
+        private readonly UserRepository _userRepository;
 
-    public async Task<bool> RegisterUserAsync(User user)
-    {
-        var existingUser = await _userRepository.GetUserByEmailAsync(user.Email);
-        if (existingUser != null)
+        public UserService(UserRepository userRepository)
         {
-            return false;
+            _userRepository = userRepository;
         }
 
-        await _userRepository.AddUserAsync(user);
-        return true;
-    }
-
-    public async Task<User> AuthenticateUserAsync(string email, string password)
-    {
-        var user = await _userRepository.GetUserByEmailAsync(email);
-        if (user != null && user.Password == password)
+        public async Task<bool> RegisterUserAsync(User user)
         {
-            return user;
+            var existingUser = await _userRepository.GetUserByEmailAsync(user.Email);
+            if (existingUser != null)
+            {
+                return false;
+            }
+
+            await _userRepository.AddUserAsync(user);
+            return true;
         }
-        return null;
+
+        public async Task<User> AuthenticateUserAsync(string email, string password)
+        {
+            var user = await _userRepository.GetUserByEmailAsync(email);
+            if (user != null && user.Password == password)
+            {
+                return user;
+            }
+            return null;
+        }
     }
 }
