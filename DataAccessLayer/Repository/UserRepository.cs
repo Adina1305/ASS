@@ -25,5 +25,15 @@ namespace DataAccessLayer.Repository
             await _context.SaveChangesAsync();
         }
 
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            return await _context.Users.FindAsync(userId);
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
     }
 }

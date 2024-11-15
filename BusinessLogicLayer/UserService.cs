@@ -28,11 +28,31 @@ namespace BusinessLogicLayer
         public async Task<User> AuthenticateUserAsync(string email, string password)
         {
             var user = await _userRepository.GetUserByEmailAsync(email);
-            if (user != null && user.Password == password)
+
+            if (user == null)
             {
-                return user;
+                Console.WriteLine($"User not found with email: {email}");
+                return null;
             }
-            return null;
+
+            if (user.Password != password)
+            {
+                Console.WriteLine($"Incorrect password for user: {email}");
+                return null;
+            }
+
+            return user;
         }
+
+        public async Task<User> GetUserDetailsAsync(int userId)
+        {
+            return await _userRepository.GetUserByIdAsync(userId);
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _userRepository.GetAllUsersAsync();
+        }
+
     }
 }

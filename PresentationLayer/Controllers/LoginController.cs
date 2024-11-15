@@ -26,6 +26,8 @@ namespace PresentationLayer.Controllers
 
             if (user != null)
             {
+                HttpContext.Session.SetInt32("UserId", user.Id);
+
                 if (user.UserType == "Student")
                 {
                     return RedirectToAction("StudentDashboard", "Dashboard");
@@ -46,6 +48,5 @@ namespace PresentationLayer.Controllers
 
             return View();
         }
-
     }
 }

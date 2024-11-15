@@ -8,9 +8,11 @@ namespace DataAccessLayer.Entities
 {
     public class Subject
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<Tasks> Tasks { get; set; }
+            public int SubjectId { get; set; }
+            public string Name { get; set; }
+            public int TeacherId { get; set; } 
+        
+
     }
 
 }

@@ -2,5 +2,13 @@
     ViewData["Title"] = "Dashboard Profesor";
 }
 
-<h2>Welcome, Professor!</h2>
-<p>Aici vei putea gestiona sarcinile și activitățile tale de predare.</p>
+@if (ViewBag.User != null)
+{
+    <h2>Bine ai venit, @ViewBag.User.Name @ViewBag.User.Surname!</h2>
+    <p>Email: @ViewBag.User.Email</p>
+    <p>Disciplina: @ViewBag.User.Discipline</p>
+}
+else
+{
+    <p>Nu am găsit datele utilizatorului. Te rugăm să te loghezi din nou.</p>
+}
